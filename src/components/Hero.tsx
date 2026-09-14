@@ -8,9 +8,7 @@ function Hero() {
           <h1 className="text-4xl font-extrabold leading-tight text-slate-900 md:text-6xl">
             Build Your Ideal
             <br />
-            <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 bg-clip-text text-transparent">
-              Development Stack
-            </span>
+            <span className="brand-text">Development Stack</span>
           </h1>
 
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-slate-500 md:mx-0">
@@ -20,7 +18,7 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex gap-4 md:justify-start">
-            <button className="flex-1 rounded-lg bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 px-3 py-3 text-sm font-semibold text-white md:flex-none md:px-5">
+            <button className="brand-gradient flex-1 rounded-lg px-3 py-3 text-sm font-semibold text-white md:flex-none md:px-5">
               Explore Technologies
             </button>
 
@@ -29,6 +27,7 @@ function Hero() {
             </button>
           </div>
         </div>
+
         <div className="flex justify-center">
           <img
             src={heroImage}
