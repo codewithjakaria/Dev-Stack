@@ -1,12 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import technologies from '../data/technologies.json';
 
-type Technology = (typeof technologies)[number];
+type Technology = {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  icon: string;
+  rating: number;
+  difficulty: string;
+  badge: string;
+};
 
 function TechnologyCard() {
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
   const [selectedStack, setSelectedStack] = useState<Technology[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/technologies.json')
+      .then(response => response.json())
+      .then(data => {
+        setTechnologies(data);
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 200);
+      });
+  }, []);
 
   function handleAdd(technology: Technology) {
     const alreadyAdded = selectedStack.some(item => item.id === technology.id);
@@ -30,6 +52,16 @@ function TechnologyCard() {
   function handleRemoveAll() {
     setSelectedStack([]);
     toast.info('All technologies removed!');
+  }
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-violet-600"></div>
+
+        <p className="mt-4 text-slate-500">Loading technologies...</p>
+      </div>
+    );
   }
 
   return (
@@ -111,7 +143,7 @@ function TechnologyCard() {
           })}
         </div>
 
-
+        {/* Your Stack */}
         <div className="h-fit rounded-xl border border-slate-100 bg-white p-5 shadow-sm">
           <h2 className="text-xl font-bold text-slate-800">Your Stack</h2>
 
@@ -124,6 +156,7 @@ function TechnologyCard() {
               Your stack is empty.
             </div>
           )}
+
           <div className="mt-5 space-y-3">
             {selectedStack.map(item => (
               <div
