@@ -1,11 +1,12 @@
 import Navbar from './components/Navbar';
+import Hero from './components/Hero'
 
 function App() {
   return (
     <>
       <Navbar />
+      <Hero />
 
-      <main>{/* পরে এখানে Hero, Technologies, Footer বসবে */}</main>
     </>
   );
 }
