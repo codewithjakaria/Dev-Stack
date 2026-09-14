@@ -51,5 +51,5 @@ A parent component sends data to a child component through props. A child can se
 
 ## Links
 
-- GitHub Repository Link: Add your GitHub repository link here
-- Live Site Link: Add your Netlify or Vercel live site link here
+- GitHub Repository Link: https://github.com/codewithjakaria/Dev-Stack
+- Live Site Link: https://dev-stack-two-theta.vercel.app/
